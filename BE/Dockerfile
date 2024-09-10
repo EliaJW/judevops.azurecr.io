@@ -7,7 +7,7 @@ FROM python:3.12-slim
 COPY . .
 
 # Installera Python-beroenden
-RUN pip install -r requirements.txt
+RUN pip install -r /BE/requirements.txt
 
 # Kopiera applikationsfilerna till arbetskatalogen
 
