@@ -32,4 +32,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
 
-          
+      - name: Build and Push Docker image
+        run: |
+            docker build -t judevops.azurecr.io/elijah_samholm-calculator:latest -f BE/Dockerfile .
+            docker push judevops.azurecr.io/elijah_samholm-calculator:latest 
