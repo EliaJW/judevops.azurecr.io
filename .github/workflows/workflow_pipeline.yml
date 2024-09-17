@@ -24,6 +24,22 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+      - name: install packges
+        run:
+          pip install -r BE/requirments.txt
+
+      - name: Start REST API
+        run: | 
+          python BE/calculator.py --rest &
+        
+          python -m pytest --junit-xml=report.xml
+
+      
+      - name: JUnit Report Action
+        uses: mikepenz/action-junit-report@v4.3.1
+        if : success()||failure()
+        with:
+         report_paths : '**/*.xml'
 
       - name: login
         uses: docker/login-action@v3
@@ -34,5 +50,7 @@ jobs:
 
       - name: Build and Push Docker image
         run: |
-            docker build -t judevops.azurecr.io/elijah_samholm-calculator:latest -f BE/Dockerfile .
+            docker build -t judevops.azurecr.io/elijah_samholm-calculator:latest -f BE/Dockerfile ./BE
             docker push judevops.azurecr.io/elijah_samholm-calculator:latest 
+
+            

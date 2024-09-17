@@ -1,4 +1,4 @@
-import logger
+#import logger
 
 class CalculatorHelper():
     log_properties = {
@@ -22,7 +22,7 @@ class CalculatorHelper():
             admin = self.User('admin','test1234')
             self._user_list.append(admin)
             self._is_initialized = True
-            self.logger = logger.get_logger(__name__)
+            #self.logger = logger.get_logger(__name__)
 
     class User():
         def __init__(self, username, password):
@@ -33,19 +33,20 @@ class CalculatorHelper():
             return f"User(username={self.username}, password={self.password})"
 
     def add(self, a, b):
-        self.logger.debug(f"Addition {a} + {b}", extra=self.log_properties)
-        return a + b
+        result = a + b
+        #self.logger.debug(f"Addition {a} + {b} ,{f"the result is {result}"}", extra=self.log_properties)
+        return result
 
     def subtract(self, a, b):
-        self.logger.debug(f"Sub {a} - {b}", extra=self.log_properties)
+        #self.logger.debug(f"Sub {a} - {b}", extra=self.log_properties)
         return a - b
 
     def multiply(self, a, b):
-        self.logger.debug(f"Multiplikation {a} * {b}", extra=self.log_properties)
+        #self.logger.debug(f"Multiplikation {a} * {b}", extra=self.log_properties)
         return a * b
 
     def divide(self, a, b):
-        self.logger.debug(f"Division {a} / {b}", extra=self.log_properties)
+        #self.logger.debug(f"Division {a} / {b}", extra=self.log_properties)
         return a / b
 
     def register_user(self, username, password):
