@@ -12,4 +12,4 @@ RUN pip install -r requirements.txt
 # Kopiera applikationsfilerna till arbetskatalogen
 
 # Specificera hur applikationen ska köras när containern startas
-ENTRYPOINT ["python", "calculator.py"]
+ENTRYPOINT ["python", "/calculator.py"]
