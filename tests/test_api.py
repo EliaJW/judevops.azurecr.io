@@ -27,4 +27,4 @@ class TestCalcApi ():
       client = Client("http://localhost:5000/")
       calculation = Calculation(operation=Opertions.ADD, operand1=1, operand2=1)
       response: ResultResponse = calculate.sync(client=client, body=calculation)
-      assert response.result == 2
+      assert response.result == 2 
